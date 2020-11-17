@@ -60,17 +60,8 @@ public class KrakatauLibrary {
         if(0 == fqClassNames.size()) throw new KrakatauException("Specified 'fqClassNames' is empty");
         if(null == outDir) throw new KrakatauException("Specified 'outDir' is null");
         if(!(outDir.exists() && outDir.isDirectory())) throw new KrakatauException("Invalid output directory: [" + outDir.getAbsolutePath() + "]");
-        // find rt.jar
-        String jrePath = System.getProperty("java.home");
-        File jreDir = new File(jrePath);
-        if(!(jreDir.exists() && jreDir.isDirectory())) throw new KrakatauException(
-                "Invalid JRE dir: [" + jreDir.getAbsolutePath() +"] obtained through 'java.home' property");
-        File rtJar = new File(jreDir, "lib/rt.jar");
-        if(!(rtJar.exists() && rtJar.isFile())) throw new KrakatauException(
-                "Cannot access 'rt.jar' on path: [" + rtJar.getAbsolutePath() + "]");
         // prepare classpath
-        List<String> classpath = new ArrayList<String>(classpathFiles.size() + 1);
-        classpath.add(rtJar.getPath());
+        List<String> classpath = new ArrayList<String>(classpathFiles.size());
         for(File fi : classpathFiles) {
             classpath.add(fi.getPath());
         }
