@@ -43,9 +43,6 @@
 
     <modules>
         <module>krakatau-lib</module>
-        <module>krakatau-cli</module>
-        <module>krakatau-maven-plugin</module>
-        <module>krakatau-maven-plugin-test</module>
     </modules>
 
     <properties>
